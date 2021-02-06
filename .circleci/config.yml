@@ -1,4 +1,4 @@
-version: 2.0
+version: 2.1
 jobs:
   build:
     working_directory: ~/my-project
@@ -13,5 +13,4 @@ jobs:
           key: AngularCircleCI-{{ .Branch }}-{{ checksum "package.json" }}
           paths:
             - "node_modules"
-      - run: xvfb-run -a npm run test --
       - run: xvfb-run -a npm run e2e -- --no-progress --config=protractor-ci.conf.js
