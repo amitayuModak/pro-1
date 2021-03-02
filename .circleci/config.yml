@@ -8,24 +8,6 @@ jobs:
       - image: circleci/node:12-browsers
     steps:
       - checkout
-      - slack/notify:
-          channel: 'devops'
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "*This is a text notification*",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-          event: always
       - restore_cache:
           key: pro-1-{{ .Branch }}-{{ checksum "package.json" }}
       - run: npm install
